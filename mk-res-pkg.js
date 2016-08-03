@@ -19,19 +19,10 @@ if(args.name == null || args.version == null || args.url == null){
 	process.exit(1)
 }
 
+console.log(args)
+console.log('Ready? GO! GO! GO!')
+
 pageMapping = {}
-waker = walk.walk(__dirname)
-
-waker.on('file', function(root, stat, next){
-	file = path.relative(__dirname, root + '/' + stat.name)
-	if(args.verbose) console.log(file)
-	pageMapping[args.url + '/' + file] = '/' + file
-	next()
-})
-
-waker.on('end', function(){
-	writePageMapping()
-})
 
 writePageMapping = function(){
 	jsonString = JSON.stringify(pageMapping, null, 4)
@@ -66,5 +57,16 @@ calculateMd5 = function(file){
 	})
 }
 
-console.log(args)
-console.log('Ready? GO! GO! GO!')
+waker = walk.walk(__dirname)
+
+waker.on('file', function(root, stat, next){
+	file = path.relative(__dirname, root + '/' + stat.name)
+	if(args.verbose) console.log(file)
+	pageMapping[args.url + '/' + file] = '/' + file
+
+	next()
+})
+
+waker.on('end', function(){
+	writePageMapping()
+})
