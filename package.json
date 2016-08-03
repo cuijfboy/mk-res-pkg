@@ -1,0 +1,20 @@
+{
+  "name": "mk-res-pkg",
+  "version": "1.0.0",
+  "description": "make resource package",
+  "main": "mk-res-pkg.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cuijfboy",
+  "license": "ISC",
+  "dependencies": {
+    "adm-zip": "^0.4.7",
+    "command-line-args": "^3.0.1",
+    "md5": "^2.1.0",
+    "walk": "^2.3.9"
+  }
+}
