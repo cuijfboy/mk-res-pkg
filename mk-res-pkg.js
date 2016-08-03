@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 var fs = require('fs')
 var path = require('path')
 var commandLineArgs = require('command-line-args')
@@ -11,14 +13,15 @@ args = commandLineArgs([
 	{name: 'url', type: String},
 	{name: 'verbose', type: Boolean}
 ])
+cwd = process.cwd()
 
 if(args.verbose == null) args.verbose = false
 if(args.name == null || args.version == null || args.url == null){
 	console.log('ERROR: INVALID ARGS !!!')
-	console.log('USAGE: node mk-res-pkg.js --name <name> --version <version> --url <urlPrefix> --verbose')
+	console.log('USAGE: mk-res-pkg --name <name> --version <version> --url <urlPrefix> --verbose')
 	process.exit(1)
 }
-console.log(args)
+console.log('current directory:' + cwd)
 console.log('Ready? GO! GO! GO!')
 
 pageMapping = {}
@@ -27,9 +30,9 @@ writePageMapping = function(){
 	jsonString = JSON.stringify(pageMapping, null, 4)
 	if(args.verbose) console.log(jsonString)
 
-	fs.writeFile('page_pageMapping.json', new Buffer(jsonString), function(err){
+	fs.writeFile('page_mapping.json', new Buffer(jsonString), function(err){
 		if(err) throw err
-		console.log('"page_pageMapping.json" generated !')
+		console.log('"page_mapping.json" generated !')
 
 		createZipFile()
 	})
@@ -38,9 +41,10 @@ writePageMapping = function(){
 createZipFile = function(){
 	console.log('Generating zip file ...')
 	zip = new AdmZip()
-	zip.addLocalFolder(__dirname, args.name)
+	zip.addLocalFolder(cwd, args.name)
 	zipName = args.name + '@' + args.version + '.zip'
-	zipPath = __dirname + '/' + zipName
+	zipPath = cwd + '/' + zipName
+	if(args.verbose) console.log(zipPath)
 	zip.writeZip(zipPath)
 	console.log('"' + zipName + '" generated !')
 
@@ -57,10 +61,10 @@ calculateMd5 = function(file){
 	})
 }
 
-walker = walk.walk(__dirname)
+walker = walk.walk(cwd)
 
 walker.on('file', function(root, stat, next){
-	file = path.relative(__dirname, root + '/' + stat.name)
+	file = path.relative(cwd, root + '/' + stat.name)
 	if(args.verbose) console.log(file)
 	pageMapping[args.url + '/' + file] = '/' + file
 

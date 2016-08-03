@@ -1,6 +1,6 @@
 {
   "name": "mk-res-pkg",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "make resource package",
   "main": "mk-res-pkg.js",
   "directories": {
@@ -8,6 +8,13 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuijfboy/mk-res-pkg.git"
+  },
+  "bin": {
+    "mk-res-pkg": "./mk-res-pkg.js"
   },
   "author": "cuijfboy",
   "license": "ISC",
