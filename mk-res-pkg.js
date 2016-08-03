@@ -52,14 +52,14 @@ calculateMd5 = function(file){
 	fs.readFile(file, function(err, buf){
 		info = path.parse(file)
 		console.log('MD5 (' + info.name + info.ext + ') = ' + md5(buf))
-		
+
 		console.log('Well Done !')
 	})
 }
 
-waker = walk.walk(__dirname)
+walker = walk.walk(__dirname)
 
-waker.on('file', function(root, stat, next){
+walker.on('file', function(root, stat, next){
 	file = path.relative(__dirname, root + '/' + stat.name)
 	if(args.verbose) console.log(file)
 	pageMapping[args.url + '/' + file] = '/' + file
@@ -67,6 +67,6 @@ waker.on('file', function(root, stat, next){
 	next()
 })
 
-waker.on('end', function(){
+walker.on('end', function(){
 	writePageMapping()
 })
