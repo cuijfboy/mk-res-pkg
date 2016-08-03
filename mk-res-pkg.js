@@ -18,7 +18,6 @@ if(args.name == null || args.version == null || args.url == null){
 	console.log('USAGE: node mk-res-pkg.js --name <name> --version <version> --url <urlPrefix> --verbose')
 	process.exit(1)
 }
-
 console.log(args)
 console.log('Ready? GO! GO! GO!')
 
@@ -53,6 +52,7 @@ calculateMd5 = function(file){
 	fs.readFile(file, function(err, buf){
 		info = path.parse(file)
 		console.log('MD5 (' + info.name + info.ext + ') = ' + md5(buf))
+		
 		console.log('Well Done !')
 	})
 }
