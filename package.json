@@ -1,6 +1,6 @@
 {
   "name": "mk-res-pkg",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "make resource package",
   "main": "mk-res-pkg.js",
   "directories": {
@@ -19,7 +19,7 @@
   "author": "cuijfboy",
   "license": "ISC",
   "dependencies": {
-    "adm-zip": "^0.4.7",
+    "archiver": "^1.0.1",
     "command-line-args": "^3.0.1",
     "md5": "^2.1.0",
     "slash": "^1.0.0",
