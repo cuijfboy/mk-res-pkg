@@ -6,6 +6,7 @@ var commandLineArgs = require('command-line-args')
 var walk = require('walk')
 var AdmZip = require('adm-zip')
 var md5 = require('md5')
+var slash = require('slash')
 
 args = commandLineArgs([
 	{name: 'name', type: String},
@@ -64,9 +65,9 @@ calculateMd5 = function(file){
 walker = walk.walk(cwd)
 
 walker.on('file', function(root, stat, next){
-	file = path.relative(cwd, root + '/' + stat.name)
+	file = slash(path.relative(cwd, root + '/' + stat.name))
 	if(args.verbose) console.log(file)
-	pageMapping[args.url + '/' + file] = '/' + file
+	pageMapping[args.url + '/' + file] = '/' + args.name + '/' + file
 
 	next()
 })
