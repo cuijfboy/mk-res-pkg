@@ -1,8 +1,8 @@
 # mk-res-pkg
 make resource package
 
-# Install
+### Install
 npm install mk-res-pkg -g
 
-# Usage
+### Usage
 mk-res-pkg --name <name> --version <version> --url <urlPrefix> --verbose
