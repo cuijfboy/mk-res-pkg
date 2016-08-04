@@ -51,6 +51,8 @@ createZipFile = function(){
 	
 	output = fs.createWriteStream(zipPath);
 	output.on('close', function() {
+		fs.unlink('page_mapping.json')
+		
 		calculateMd5(zipPath)
 	});
 	zip.pipe(output);

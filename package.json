@@ -1,6 +1,6 @@
 {
   "name": "mk-res-pkg",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "make resource package",
   "main": "mk-res-pkg.js",
   "directories": {
