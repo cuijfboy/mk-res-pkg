@@ -1,5 +1,6 @@
 # mk-res-pkg
-make resource package
+make resource package    
+[https://www.npmjs.com/package/mk-res-pkg](https://www.npmjs.com/package/mk-res-pkg)
 
 ### Install
 
@@ -19,5 +20,3 @@ mk-res-pkg --name <name> --version <version> --url <urlPrefix> --verbose
 cd /my/home/example
 mk-res-pkg --name example --version 0.0.1 --url http://www.example.com/example --verbose
 ```
-
-[https://www.npmjs.com/package/mk-res-pkg](https://www.npmjs.com/package/mk-res-pkg)
