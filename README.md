@@ -14,8 +14,10 @@ cd /path/to/resource/package/folder
 mk-res-pkg --name <name> --version <version> --url <urlPrefix> --verbose
 ```
 
-e.g. 
+### E.g. 
 ```shell
+cd /my/home/example
 mk-res-pkg --name example --version 0.0.1 --url http://www.example.com/example --verbose
 ```
 
+[https://www.npmjs.com/package/mk-res-pkg](https://www.npmjs.com/package/mk-res-pkg)
